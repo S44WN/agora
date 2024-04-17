@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
+import newRequest from "../../utils/newRequest";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [active, setActive] = useState(false);
@@ -21,10 +23,18 @@ function Navbar() {
 
   // const currentUser = null
 
-  const currentUser = {
-    id: 1,
-    username: "Anna",
-    isSeller: true,
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.removeItem("currentUser", null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -42,33 +52,32 @@ function Navbar() {
           <span>English</span>
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
-            <div className="user" onClick={()=>setOpen(!open)}>
-              <img
-                src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                alt=""
-              />
+            <div className="user" onClick={() => setOpen(!open)}>
+              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-              {open && <div className="options">
-                {currentUser.isSeller && (
-                  <>
-                    <Link className="link" to="/mygigs">
-                      Gigs
-                    </Link>
-                    <Link className="link" to="/add">
-                      Add New Gig
-                    </Link>
-                  </>
-                )}
-                <Link className="link" to="/orders">
-                  Orders
-                </Link>
-                <Link className="link" to="/messages">
-                  Messages
-                </Link>
-                <Link className="link" to="/">
-                  Logout
-                </Link>
-              </div>}
+              {open && (
+                <div className="options">
+                  {currentUser.isSeller && (
+                    <>
+                      <Link className="link" to="/mygigs">
+                        Gigs
+                      </Link>
+                      <Link className="link" to="/add">
+                        Add New Gig
+                      </Link>
+                    </>
+                  )}
+                  <Link className="link" to="/orders">
+                    Orders
+                  </Link>
+                  <Link className="link" to="/messages">
+                    Messages
+                  </Link>
+                  <Link className="link" to="/" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </div>
+              )}
             </div>
           ) : (
             <>
