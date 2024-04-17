@@ -43,6 +43,7 @@ function Register() {
       console.log(err);
     }
   };
+
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
