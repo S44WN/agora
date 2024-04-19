@@ -7,17 +7,81 @@ import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { cards, projects } from "../../data";
 
+import { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+// import "swiper/css/pagination";
+
+// import required modules
+import { Pagination } from "swiper/modules";
+
 function Home() {
   return (
-    <div className="home">
+    <div className="home container">
       <Featured />
       <TrustedBy />
-      <Slide slidesToShow={5} arrowsScroll={5}>
-        {cards.map((card) => (
-          <CatCard key={card.id} card={card} />
-        ))}
-      </Slide>
-      <div className="features">
+
+      <section className="slider">
+        <Swiper
+          slidesPerView={5}
+          spaceBetween={200}
+          pagination={{
+            clickable: true,
+          }}
+          loop={true}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {cards.map((card) => (
+            <SwiperSlide key={card.id}>
+              <CatCard key={card.id} card={card} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
+      <section className="work container">
+        <div className="work__container">
+          <div className="work__item work__item-1 work__item-image">
+            {/* <h2>explore through treasure trove of talent and treasures</h2> */}
+
+            <img src="../../../public/img/feat/feat4.jpg" alt="" />
+          </div>
+          <div className="work__item work__item-2 work__item-image">
+            {/* <h2 className="work__item-2-title">
+              explore through treasure trove of talent and treasures
+            </h2>
+            <div className="work__item-2-desc">
+              <p className="work__item-2-descitem">
+                Exchange Knowledge and Insights
+              </p>
+              <p className="work__item-2-descitem">Trade Footwear Finds</p>
+              <p className="work__item-2-descitem">
+                Rent Out High-Tech Lenses and Gear
+              </p>
+              <p className="work__item-2-descitem">
+                Turn Your Skills into Campus Currency
+              </p>
+            </div> */}
+
+            {/* find your next business partner */}
+            <img src="../../../public/img/feat/feat1.jpg" alt="" />
+          </div>
+          <div className="work__item work__item-3 work__item-image">
+            <img src="../../../public/img/feat/feat2.jpg" alt="" />
+          </div>
+          <div className="work__item work__item-4 work__item-image">
+            <img src="../../../public/img/feat/feat3.jpg" alt="" />
+          </div>
+          <div className="work__item work__item-5 work__item-image">
+            <img src="../../../public/img/feat/feat4.jpg" alt="" />
+          </div>
+        </div>
+      </section>
+      {/* <div className="features">
         <div className="container">
           <div className="item">
             <h1>A whole world of freelance talent at your fingertips</h1>
@@ -42,7 +106,7 @@ function Home() {
               Protected payments, every time
             </div>
             <p>
-              Always know what you'll pay upfront. Your payment isn't released
+              Always know what youll pay upfront. Your payment isnt released
               until you approve the work.
             </p>
             <div className="title">
@@ -54,12 +118,10 @@ function Home() {
               just project-based pricing.
             </p>
           </div>
-          <div className="item">
-            <video src="./img/video.mp4" controls />
-          </div>
         </div>
-      </div>
-      <div className="explore">
+      </div> */}
+
+      {/* <div className="explore">
         <div className="container">
           <h1>Explore the marketplace</h1>
           <div className="items">
@@ -146,8 +208,9 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="features dark">
+      </div> */}
+
+      {/* <div className="features dark">
         <div className="container">
           <div className="item">
             <h1>
@@ -183,7 +246,7 @@ function Home() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <Slide slidesToShow={4} arrowsScroll={4}>
         {projects.map((card) => (
           <ProjectCard key={card.id} card={card} />

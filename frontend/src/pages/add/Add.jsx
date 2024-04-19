@@ -67,10 +67,10 @@ const Add = () => {
   };
 
   return (
-    <div className="add">
-      <div className="container">
-        <h1>Add New Gig</h1>
-        <div className="sections">
+    <div className="add container">
+      <section className="add__container">
+        <h1 className="add__container-title">Add New Gig</h1>
+        <div className="add__container-sections">
           <div className="info">
             <label htmlFor="">Title</label>
             <input
@@ -100,7 +100,7 @@ const Add = () => {
                   onChange={(e) => setFiles(e.target.files)}
                 />
               </div>
-              <button onClick={handleUpload}>
+              <button className="btn upload__btn" onClick={handleUpload}>
                 {uploading ? "uploading" : "Upload"}
               </button>
             </div>
@@ -110,10 +110,9 @@ const Add = () => {
               id=""
               placeholder="Brief descriptions to introduce your service to customers"
               cols="0"
-              rows="16"
+              rows="13"
               onChange={handleChange}
             ></textarea>
-            <button onClick={handleSubmit}>Create</button>
           </div>
           <div className="details">
             <label htmlFor="">Service Title</label>
@@ -141,20 +140,29 @@ const Add = () => {
               onChange={handleChange}
             />
             <label htmlFor="">Add Features</label>
-            <form action="" className="add" onSubmit={handleFeature}>
-              <input type="text" placeholder="e.g. page design" />
-              <button type="submit">add</button>
+            <form action="" className="featadd" onSubmit={handleFeature}>
+              <input
+                // className="featadd"
+                type="text"
+                placeholder="e.g. page design"
+              />
+              <button className="btn featadd_btn" type="submit">
+                add
+              </button>
             </form>
-            <div className="addedFeatures">
+            <div className="addedfeatures">
               {state?.features?.map((f) => (
                 <div className="item" key={f}>
                   <button
+                    className="addedfeatures__btn btn"
                     onClick={() =>
                       dispatch({ type: "REMOVE_FEATURE", payload: f })
                     }
                   >
                     {f}
-                    <span>X</span>
+                    <div className="addedfeatures__btn-img">
+                      <img src="../../../public/img/others/cancel.png" alt="" />
+                    </div>
                   </button>
                 </div>
               ))}
@@ -163,7 +171,10 @@ const Add = () => {
             <input type="number" onChange={handleChange} name="price" />
           </div>
         </div>
-      </div>
+        <button className="create__btn btn" onClick={handleSubmit}>
+          Create
+        </button>
+      </section>
     </div>
   );
 };

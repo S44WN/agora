@@ -5,10 +5,12 @@ import "./CatCard.scss";
 function CatCard({ card }) {
   return (
     <Link to="/gigs?cat=design">
-      <div className="catCard">
+      <div className="category__card">
         <img src={card.img} alt="" />
-        <span className="desc">{card.desc}</span>
-        <span className="title">{card.title}</span>
+        <div className="category__details">
+          <p className="category__desc">{card.desc}</p>
+          <p className="category__title">{card.title}</p>
+        </div>
       </div>
     </Link>
   );

@@ -9,24 +9,31 @@ function Featured() {
   const handleSubmit = () => {
     navigate(`/gigs?search=${input}`);
   };
+
   return (
-    <div className="featured">
-      <div className="container">
-        <div className="left">
-          <h1>
-            Find the perfect <span>freelance</span> services for your business
-          </h1>
-          <div className="search">
-            <div className="searchInput">
-              <img src="./img/search.png" alt="" />
-              <input
-                type="text"
-                placeholder='Try "building mobil app"'
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </div>
-            <button onClick={handleSubmit}>Search</button>
+    <div className="hero">
+      <div className="hero__container container">
+        {/* <div className="hero__top"> */}
+        <h1 className="hero__title">
+          here students trade treasures and talents! from books to bytes,{" "}
+          <span className="hero__title-sub">Agora&apos;s</span> your spot for
+          smart swapping!
+        </h1>
+        <div className="hero__search">
+          <div className="hero__searchInput">
+            <input
+              type="text"
+              placeholder='Try "camera"'
+              onChange={(e) => setInput(e.target.value)}
+            />
           </div>
+          <div className="hero__search-btn" onClick={handleSubmit}>
+            <img src="./img/search.png" alt="" />
+          </div>
+        </div>
+        {/* </div> */}
+        {/* <div className="hero__bottom">
+
           <div className="popular">
             <span>Popular:</span>
             <button>Web Design</button>
@@ -34,10 +41,7 @@ function Featured() {
             <button>Logo Design</button>
             <button>AI Services</button>
           </div>
-        </div>
-        <div className="right">
-          <img src="./img/man.png" alt="" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

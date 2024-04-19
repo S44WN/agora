@@ -36,14 +36,13 @@ function Navbar() {
 
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
-      <div className="container">
+      <div className="nav__container container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">fiverr</span>
+            <span className="text">Agora</span>
           </Link>
-          <span className="dot">.</span>
         </div>
-        <div className="links">
+        <div className="links menu__item">
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
@@ -88,7 +87,7 @@ function Navbar() {
           )}
         </div>
       </div>
-      {(active || pathname !== "/") && (
+      {/* {(active || pathname !== "/") && (
         <>
           <hr />
           <div className="menu">
@@ -122,7 +121,7 @@ function Navbar() {
           </div>
           <hr />
         </>
-      )}
+      )} */}
     </div>
   );
 }
