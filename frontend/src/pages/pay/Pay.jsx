@@ -38,7 +38,7 @@ const Pay = () => {
   };
 
   return (
-    <div className="pay">
+    <div className="pay container">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

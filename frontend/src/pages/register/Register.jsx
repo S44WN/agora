@@ -45,52 +45,59 @@ function Register() {
   };
 
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit}>
+    <div className="register container">
+      <form onSubmit={handleSubmit} className="register__form">
         <div className="left">
-          <h1>Create a new account</h1>
+          <h1 className="register__form-title">Create a new account</h1>
           <label htmlFor="">Username</label>
           <input
             name="username"
             type="text"
-            placeholder="johndoe"
+            placeholder="enter a unique username"
             onChange={handleChange}
           />
           <label htmlFor="">Email</label>
           <input
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="enter an email"
             onChange={handleChange}
           />
           <label htmlFor="">Password</label>
-          <input name="password" type="password" onChange={handleChange} />
+          <input
+            name="password"
+            type="password"
+            placeholder="enter password"
+            onChange={handleChange}
+          />
           <label htmlFor="">Profile Picture</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           <label htmlFor="">Country</label>
           <input
             name="country"
             type="text"
-            placeholder="Usa"
+            placeholder="enter country"
             onChange={handleChange}
           />
-          <button type="submit">Register</button>
         </div>
         <div className="right">
-          <h1>I want to become a seller</h1>
+          <h1 className="register__form-title">I want to become a seller</h1>
           <div className="toggle">
             <label htmlFor="">Activate the seller account</label>
             <label className="switch">
               <input type="checkbox" onChange={handleSeller} />
-              <span className="slider round"></span>
+              <span className="slidertog round"></span>
             </label>
           </div>
-          <label htmlFor="">Phone Number</label>
+          <label htmlFor="" className="phlabel">
+            Phone Number
+          </label>
           <input
             name="phone"
             type="text"
-            placeholder="+1 234 567 89"
+            placeholder="+91 8734345778"
             onChange={handleChange}
+            className="phoneno"
           />
           <label htmlFor="">Description</label>
           <textarea
@@ -102,6 +109,9 @@ function Register() {
             onChange={handleChange}
           ></textarea>
         </div>
+        <button type="submit" className="btn register__btn">
+          Register
+        </button>
       </form>
     </div>
   );

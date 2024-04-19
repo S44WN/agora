@@ -23,13 +23,13 @@ function Login() {
 
   return (
     <div className="login">
-      <form onSubmit={handleSubmit}>
-        <h1>Sign in</h1>
+      <form onSubmit={handleSubmit} className="login__form">
+        <h1 className="login__form-title">Sign in</h1>
         <label htmlFor="">Username</label>
         <input
           name="username"
           type="text"
-          placeholder="johndoe"
+          placeholder="enter username"
           onChange={(e) => setUsername(e.target.value)}
         />
 
@@ -37,9 +37,12 @@ function Login() {
         <input
           name="password"
           type="password"
+          placeholder="enter password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button className="btn login__btn" type="submit">
+          Login
+        </button>
         {error && error}
       </form>
     </div>

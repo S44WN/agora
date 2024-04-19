@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
+import ImageSlider from "../../components/imageslider/ImageSlider";
 
 function Gig() {
   const { id } = useParams();
@@ -67,6 +68,7 @@ function Gig() {
                 )}
               </div>
             )}
+            <ImageSlider slides={data.images} />
             {/* <Slider className="slider">
               {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
