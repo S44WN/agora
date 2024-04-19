@@ -41,9 +41,7 @@ function Gig() {
       ) : (
         <div className="container">
           <div className="left">
-            <span className="breadcrumbs">
-              Fiverr {">"} Graphics & Design {">"}
-            </span>
+            <span className="breadcrumbs">Agora</span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
               "loading"
@@ -99,7 +97,7 @@ function Gig() {
                         </span>
                       </div>
                     )}
-                    <button>Contact Me</button>
+                    <button className="btn contact__btn">Contact Me</button>
                   </div>
                 </div>
                 <div className="box">
@@ -135,7 +133,7 @@ function Gig() {
           <div className="right">
             <div className="price">
               <h3>{data.shortTitle}</h3>
-              <h2>$ {data.price}</h2>
+              <h3>$ {data.price}</h3>
             </div>
             <p>{data.shortDesc}</p>
             <div className="details">
@@ -151,13 +149,13 @@ function Gig() {
             <div className="features">
               {data.features.map((feature) => (
                 <div className="item" key={feature}>
-                  <img src="/img/greencheck.png" alt="" />
+                  ⚫{/* <img src="/img/greencheck.png" alt="" /> */}
                   <span>{feature}</span>
                 </div>
               ))}
             </div>
             <Link to={`/pay/${id}`}>
-              <button>Continue</button>
+              <button className="btn ordr__btn">Continue</button>
             </Link>
           </div>
         </div>

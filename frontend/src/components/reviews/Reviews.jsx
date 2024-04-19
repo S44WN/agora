@@ -38,7 +38,7 @@ const Reviews = ({ gigId }) => {
         : error
         ? "Something went wrong!"
         : data.map((review) => <Review key={review._id} review={review} />)}
-      <div className="add">
+      <div className="addreview">
         <h3>Add a review</h3>
         <form action="" className="addForm" onSubmit={handleSubmit}>
           <input type="text" placeholder="write your opinion" />
@@ -49,7 +49,7 @@ const Reviews = ({ gigId }) => {
             <option value={4}>4</option>
             <option value={5}>5</option>
           </select>
-          <button>Send</button>
+          <button className="btn addreview__btn">Send</button>
         </form>
       </div>
     </div>
