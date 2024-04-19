@@ -7,9 +7,9 @@ function ProjectCard({ card }) {
       <img src={card.img} alt="" />
       <div className="info">
         <img src={card.pp} alt="" />
-        <div className="texts">
-          <h2>{card.cat}</h2>
-          <span>{card.username}</span>
+        <div className="project__details">
+          <h2 className="project__cat">{card.cat}</h2>
+          <p className="project__uname">{card.username}</p>
         </div>
       </div>
     </div>

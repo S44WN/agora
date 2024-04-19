@@ -34,47 +34,53 @@ function MyGigs() {
   };
 
   return (
-    <div className="myGigs">
+    <div className="mygigs container">
       {isLoading ? (
         "loading"
       ) : error ? (
         "error"
       ) : (
-        <div className="container">
-          <div className="title">
-            <h1>Gigs</h1>
+        <div className="mygigs__container">
+          <div className="title-bar">
+            <h1 className="title">Gigs</h1>
             {currentUser.isSeller && (
               <Link to="/add">
-                <button>Add New Gig</button>
+                <button className="btn addgig__btn">Add New Gig</button>
               </Link>
             )}
           </div>
           <table>
-            <tr>
-              <th>Image</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Sales</th>
-              <th>Action</th>
-            </tr>
-            {data.map((gig) => (
-              <tr key={gig._id}>
-                <td>
-                  <img className="image" src={gig.cover} alt="" />
-                </td>
-                <td>{gig.title}</td>
-                <td>{gig.price}</td>
-                <td>{gig.sales}</td>
-                <td>
-                  <img
-                    className="delete"
-                    src="./img/delete.png"
-                    alt=""
-                    onClick={() => handleDelete(gig._id)}
-                  />
-                </td>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Sales</th>
+                <th>Action</th>
               </tr>
-            ))}
+            </thead>
+            <tbody>
+              {data.map((gig) => (
+                <tr key={gig._id}>
+                  <td>
+                    <div className="image_cont">
+                      <img className="image" src={gig.cover} alt="" />
+                    </div>
+                  </td>
+                  <td>{gig.title}</td>
+                  <td>{gig.price}</td>
+                  <td>{gig.sales}</td>
+                  <td>
+                    <img
+                      className="delete"
+                      src="./img/others/delete.png"
+                      alt=""
+                      onClick={() => handleDelete(gig._id)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       )}

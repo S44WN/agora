@@ -4,7 +4,7 @@ import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
 // import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
-// import ProjectCard from "../../components/projectCard/ProjectCard";
+import ProjectCard from "../../components/projectCard/ProjectCard";
 import { cards, projects } from "../../data";
 
 // import { useRef, useState } from "react";
@@ -48,7 +48,7 @@ function Home() {
           <div className="work__item work__item-1 work__item-image">
             {/* <h2>explore through treasure trove of talent and treasures</h2> */}
 
-            <img src="../../../public/img/feat/feat4.jpg" alt="" />
+            <img src="./img/feat/feat4.jpg" alt="" />
           </div>
           <div className="work__item work__item-2 work__item-image">
             {/* <h2 className="work__item-2-title">
@@ -68,16 +68,16 @@ function Home() {
             </div> */}
 
             {/* find your next business partner */}
-            <img src="../../../public/img/feat/feat1.jpg" alt="" />
+            <img src="./img/feat/feat1.jpg" alt="" />
           </div>
           <div className="work__item work__item-3 work__item-image">
-            <img src="../../../public/img/feat/feat2.jpg" alt="" />
+            <img src="./img/feat/feat2.jpg" alt="" />
           </div>
           <div className="work__item work__item-4 work__item-image">
-            <img src="../../../public/img/feat/feat3.jpg" alt="" />
+            <img src="./img/feat/feat3.jpg" alt="" />
           </div>
           <div className="work__item work__item-5 work__item-image">
-            <img src="../../../public/img/feat/feat4.jpg" alt="" />
+            <img src="./img/feat/feat4.jpg" alt="" />
           </div>
         </div>
       </section>
@@ -247,11 +247,11 @@ function Home() {
           </div>
         </div>
       </div> */}
-      {/* <Slide slidesToShow={4} arrowsScroll={4}>
-        {projects.map((card) => (
-          <ProjectCard key={card.id} card={card} />
-        ))}
-      </Slide> */}
+      {/* <Slide slidesToShow={4} arrowsScroll={4}> */}
+      {/* {projects.map((card) => (
+        <ProjectCard key={card.id} card={card} />
+      ))} */}
+      {/* </Slide> */}
     </div>
   );
 }
