@@ -31,6 +31,9 @@ export default function Navitem() {
         className="navitemsbody"
       >
         <a>Hey, there!</a>
+        <Link className="link" to="/">
+          <a>Home</a>
+        </Link>
         {!currentUser?.isSeller && <a>Become Seller</a>}
         {currentUser ? (
           <div className="nav__user">

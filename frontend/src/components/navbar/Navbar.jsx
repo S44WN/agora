@@ -1,94 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import newRequest from "../../utils/newRequest";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import "./Navbar.scss";
+import Navitem from "./navitem/Navitem";
+import React from "react";
 
-function Navbar() {
-  const [active, setActive] = useState(false);
-  const [open, setOpen] = useState(false);
+const menu = {
+  open: {
+    height: "450px",
+    transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] },
+  },
+  closed: {
+    height: "0px",
+    transition: {
+      duration: 0.75,
+      delay: 0.35,
+      type: "tween",
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+};
 
-  const { pathname } = useLocation();
+export default function Navbar() {
+  const [isActive, setIsActive] = useState(false);
 
-  const isActive = () => {
-    window.scrollY > 0 ? setActive(true) : setActive(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", isActive);
-    return () => {
-      window.removeEventListener("scroll", isActive);
-    };
-  }, []);
-
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      await newRequest.post("/auth/logout");
-      localStorage.setItem("currentUser", null);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
+  const toggleMenu = () => {
+    setIsActive(!isActive);
   };
 
   return (
-    <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
-      <div className="nav__container container">
-        {/* <div className="logo">
-          <Link className="link" to="/">
-            <span className="text">Agora</span>
-          </Link>
-        </div> */}
-        <div className="links menu__item">
-          <span>Fiverr Business</span>
-          <span>Explore</span>
-          <span>English</span>
-          {!currentUser?.isSeller && <span>Sell</span>}
-          {currentUser ? (
-            <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
-              <span>{currentUser?.username}</span>
-              {open && (
-                <div className="options">
-                  {currentUser.isSeller && (
-                    <>
-                      <Link className="link" to="/mygigs">
-                        Gigs
-                      </Link>
-                      <Link className="link" to="/add">
-                        Add New Gig
-                      </Link>
-                    </>
-                  )}
-                  <Link className="link" to="/orders">
-                    Orders
-                  </Link>
-                  <Link className="link" to="/messages">
-                    Messages
-                  </Link>
-                  <Link className="link" onClick={handleLogout}>
-                    Logout
-                  </Link>
-                </div>
-              )}
-            </div>
-          ) : (
-            <>
-              <Link to="/login" className="link">
-                Sign in
-              </Link>
-              <Link className="link" to="/register">
-                <button>Join</button>
-              </Link>
-            </>
-          )}
-        </div>
+    <div className="navig">
+      <motion.div
+        className="navig__hdmenu"
+        variants={menu}
+        animate={isActive ? "open" : "closed"}
+        initial="closed"
+        onClick={() => {
+          toggleMenu();
+        }}
+      >
+        <AnimatePresence>{isActive && <Navitem />}</AnimatePresence>
+      </motion.div>
+      <div
+        className="navig__menu"
+        onClick={() => {
+          toggleMenu();
+        }}
+      >
+        <div className="navig__logo">agora .</div>
+        <div className="navig__list">{isActive ? "close" : "menu"}</div>
       </div>
+
+      {/* <div className="navbar">
+        <div className="navbar__item">agora</div>
+        <div className="navbar__item">acc</div>
+        <div className="navbar__item">menu</div>
+      </div> */}
     </div>
   );
 }
-
-export default Navbar;
