@@ -34,6 +34,9 @@ export default function Nav() {
         variants={menu}
         animate={isActive ? "open" : "closed"}
         initial="closed"
+        onClick={() => {
+          toggleMenu();
+        }}
       >
         <AnimatePresence>{isActive && <Navitem />}</AnimatePresence>
       </motion.div>
