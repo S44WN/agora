@@ -16,6 +16,7 @@ import MyGigs from "./pages/myGigs/MyGigs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Pay from "./pages/pay/Pay";
 import Success from "./pages/success/Success";
+import Nav from "./components/nav/Nav";
 function App() {
   const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
     return (
       <div className="app">
         <QueryClientProvider client={queryClient}>
+          <Nav />
           <Navbar />
           <Outlet />
           <Footer />

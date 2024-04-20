@@ -28,7 +28,7 @@ function Featured() {
             />
           </div>
           <div className="hero__search-btn" onClick={handleSubmit}>
-            <img src="./img/search.png" alt="" />
+            <img src="./img/others/srch.png" alt="" />
           </div>
         </div>
         {/* </div> */}

@@ -9,18 +9,18 @@ function Footer() {
       <div className="footer__socials">
         <a href="http://">
           <div className="footer__social-img">
-            <img src="./img/socials/instagram.png" alt="" />
+            <img src="../../../../img/socials/instagram.png" alt="" />
           </div>
         </a>
 
         <a href="http://">
           <div className="footer__social-img">
-            <img src="./img/socials/social.png" alt="" />
+            <img src="../../../../img/socials/social.png" alt="" />
           </div>
         </a>
         <a href="http://">
           <div className="footer__social-img">
-            <img src="./img/socials/twitter.png" alt="" />
+            <img src="../../../../img/socials/twitter.png" alt="" />
           </div>
         </a>
       </div>

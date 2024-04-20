@@ -37,17 +37,19 @@ const Message = () => {
   };
 
   return (
-    <div className="message">
-      <div className="container">
-        <span className="breadcrumbs">
-          <Link to="/messages">Messages</Link> {">"} John Doe {">"}
+    <div className="message container">
+      <div className="msg__container">
+        <span>
+          <Link to="/messages" className="breadcrumbs">
+            Messages
+          </Link>
         </span>
         {isLoading ? (
           "loading"
         ) : error ? (
           "error"
         ) : (
-          <div className="messages">
+          <div className="msgs">
             {data.map((m) => (
               <div
                 className={m.userId === currentUser._id ? "owner item" : "item"}
@@ -62,10 +64,12 @@ const Message = () => {
             ))}
           </div>
         )}
-        <hr />
-        <form className="write" onSubmit={handleSubmit}>
+        {/* <hr /> */}
+        <form className="write__msg" onSubmit={handleSubmit}>
           <textarea type="text" placeholder="write a message" />
-          <button type="submit">Send</button>
+          <button className="btn send__btn" type="submit">
+            Send
+          </button>
         </form>
       </div>
     </div>

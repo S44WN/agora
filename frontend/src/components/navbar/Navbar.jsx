@@ -37,16 +37,16 @@ function Navbar() {
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="nav__container container">
-        <div className="logo">
+        {/* <div className="logo">
           <Link className="link" to="/">
             <span className="text">Agora</span>
           </Link>
-        </div>
+        </div> */}
         <div className="links menu__item">
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {!currentUser?.isSeller && <span>Sell</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
@@ -87,41 +87,6 @@ function Navbar() {
           )}
         </div>
       </div>
-      {/* {(active || pathname !== "/") && (
-        <>
-          <hr />
-          <div className="menu">
-            <Link className="link menuLink" to="/">
-              Graphics & Design
-            </Link>
-            <Link className="link menuLink" to="/">
-              Video & Animation
-            </Link>
-            <Link className="link menuLink" to="/">
-              Writing & Translation
-            </Link>
-            <Link className="link menuLink" to="/">
-              AI Services
-            </Link>
-            <Link className="link menuLink" to="/">
-              Digital Marketing
-            </Link>
-            <Link className="link menuLink" to="/">
-              Music & Audio
-            </Link>
-            <Link className="link menuLink" to="/">
-              Programming & Tech
-            </Link>
-            <Link className="link menuLink" to="/">
-              Business
-            </Link>
-            <Link className="link menuLink" to="/">
-              Lifestyle
-            </Link>
-          </div>
-          <hr />
-        </>
-      )} */}
     </div>
   );
 }
