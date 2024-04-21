@@ -1,6 +1,6 @@
 .navig {
   position: fixed;
-  bottom: 1rem;
+  bottom: 3rem;
   left: 0;
   right: 0;
   width: clamp(200px, 80%, 400px);
@@ -10,7 +10,7 @@
   border-radius: 30px;
   transition: 0.4s;
   z-index: 1000;
-  border: 6px solid var(--container-color);
+  // border: 6px solid var(--container-color);
 
   .navig__hdmenu {
     border-radius: 24px;

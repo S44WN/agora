@@ -13,7 +13,7 @@ const menu = {
     height: "0px",
     transition: {
       duration: 0.75,
-      delay: 0.35,
+      delay: 0.1,
       type: "tween",
       ease: [0.76, 0, 0.24, 1],
     },
