@@ -12,7 +12,11 @@ export const createConversation = async (req, res, next) => {
 
   try {
     const savedConversation = await newConversation.save();
-    res.status(201).send(savedConversation);
+    const populatedConversation = await Conversation.populate(
+      savedConversation,
+      { path: "sellerId buyerId" }
+    );
+    res.status(201).send(populatedConversation);
   } catch (err) {
     next(err);
   }
@@ -38,7 +42,9 @@ export const updateConversation = async (req, res, next) => {
 
 export const getSingleConversation = async (req, res, next) => {
   try {
-    const conversation = await Conversation.findOne({ id: req.params.id });
+    const conversation = await Conversation.findOne({ id: req.params.id })
+      .populate("sellerId")
+      .populate("buyerId");
     if (!conversation) return next(createError(404, "Not found!"));
     res.status(200).send(conversation);
   } catch (err) {
@@ -50,7 +56,10 @@ export const getConversations = async (req, res, next) => {
   try {
     const conversations = await Conversation.find(
       req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }
-    ).sort({ updatedAt: -1 });
+    )
+      .populate("sellerId")
+      .populate("buyerId")
+      .sort({ updatedAt: -1 });
     res.status(200).send(conversations);
   } catch (err) {
     next(err);

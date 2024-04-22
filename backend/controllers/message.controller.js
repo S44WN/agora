@@ -10,6 +10,9 @@ export const createMessage = async (req, res, next) => {
   });
   try {
     const savedMessage = await newMessage.save();
+    const populatedMessage = await Message.populate(savedMessage, {
+      path: "userId",
+    });
     await Conversation.findOneAndUpdate(
       { id: req.body.conversationId },
       {
@@ -22,7 +25,7 @@ export const createMessage = async (req, res, next) => {
       { new: true }
     );
 
-    res.status(201).send(savedMessage);
+    res.status(201).send(populatedMessage);
   } catch (err) {
     next(err);
   }
@@ -30,7 +33,9 @@ export const createMessage = async (req, res, next) => {
 
 export const getMessages = async (req, res, next) => {
   try {
-    const messages = await Message.find({ conversationId: req.params.id });
+    const messages = await Message.find({
+      conversationId: req.params.id,
+    }).populate("userId");
     res.status(200).send(messages);
   } catch (err) {
     next(err);

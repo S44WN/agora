@@ -18,6 +18,8 @@ const Messages = () => {
       }),
   });
 
+  console.log(data);
+
   const mutation = useMutation({
     mutationFn: (id) => {
       return newRequest.put(`/conversations/${id}`);
@@ -52,7 +54,6 @@ const Messages = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(data)}
               {data.map((c) => (
                 <tr
                   className={
@@ -62,7 +63,11 @@ const Messages = () => {
                   }
                   key={c.id}
                 >
-                  <td>{currentUser.isSeller ? c.buyerId : c.sellerId}</td>
+                  <td>
+                    {currentUser.isSeller
+                      ? c.buyerId.username
+                      : c.sellerId.username}
+                  </td>
                   <td>
                     <Link to={`/message/${c.id}`} className="link">
                       {c?.lastMessage?.substring(0, 100)}...

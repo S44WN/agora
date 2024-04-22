@@ -13,6 +13,9 @@ const Add = () => {
 
   const [state, dispatch] = useReducer(gigReducer, INITIAL_STATE);
 
+  //
+  const options = ["Sell", "Rent"];
+
   const handleChange = (e) => {
     dispatch({
       type: "CHANGE_INPUT",
@@ -53,12 +56,15 @@ const Add = () => {
 
   const mutation = useMutation({
     mutationFn: (gig) => {
+      // console.log(gig);
       return newRequest.post("/gigs", gig);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myGigs"]);
     },
   });
+
+  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,10 +87,14 @@ const Add = () => {
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
-              <option value="design">Design</option>
-              <option value="web">Web Development</option>
-              <option value="animation">Animation</option>
-              <option value="music">Music</option>
+              <option value="" disabled selected>
+                Select a category
+              </option>
+              {options.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
             </select>
             <div className="images">
               <div className="imagesInputs">

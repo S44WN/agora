@@ -27,9 +27,6 @@ function Gigs() {
         }),
   });
 
-  //TODO - remove log
-  console.log(data);
-
   const reSort = (type) => {
     setSort(type);
     setOpen(false);

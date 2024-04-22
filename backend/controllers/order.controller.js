@@ -9,7 +9,7 @@ export const intent = async (req, res, next) => {
   const gig = await Gig.findById(req.params.id);
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: gig.price * 1,
+    amount: gig.price * 100,
     currency: "inr",
     description: "Payments for orders",
     automatic_payment_methods: {
