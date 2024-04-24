@@ -56,15 +56,12 @@ const Add = () => {
 
   const mutation = useMutation({
     mutationFn: (gig) => {
-      // console.log(gig);
       return newRequest.post("/gigs", gig);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myGigs"]);
     },
   });
-
-  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,7 +79,7 @@ const Add = () => {
             <input
               type="text"
               name="title"
-              placeholder="e.g. I will do something I'm really good at"
+              placeholder="e.g. sell or rent something"
               onChange={handleChange}
             />
             <label htmlFor="">Category</label>
@@ -129,7 +126,7 @@ const Add = () => {
             <input
               type="text"
               name="shortTitle"
-              placeholder="e.g. One-page web design"
+              placeholder="e.g. click great photos"
               onChange={handleChange}
             />
             <label htmlFor="">Short Description</label>
